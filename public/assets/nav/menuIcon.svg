@@ -1,20 +1,6 @@
-<svg width="131" height="130" viewBox="0 0 131 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_102_87)">
-<rect x="30" y="26" width="70.9459" height="70" rx="10" fill="white" shape-rendering="crispEdges"/>
-<line x1="48.4991" y1="48.4186" x2="82.4469" y2="48.4186" stroke="#4D0D74" stroke-width="4" stroke-linecap="round"/>
-<line x1="48.4991" y1="61.4419" x2="82.4469" y2="61.4419" stroke="#4D0D74" stroke-width="4" stroke-linecap="round"/>
-<line x1="48.4991" y1="74.4651" x2="82.4469" y2="74.4651" stroke="#4D0D74" stroke-width="4" stroke-linecap="round"/>
-</g>
-<defs>
-<filter id="filter0_d_102_87" x="0" y="0" width="130.946" height="130" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="15"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.258737 0 0 0 0 0.0760338 0 0 0 0 0.478812 0 0 0 0.2 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_87"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_87" result="shape"/>
-</filter>
-</defs>
+<svg width="71" height="70" viewBox="0 0 71 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="70.9459" height="70" rx="10" fill="white"/>
+<line x1="18.4991" y1="22.4186" x2="52.4469" y2="22.4186" stroke="#6C948C" stroke-width="4" stroke-linecap="round"/>
+<line x1="18.4991" y1="35.4419" x2="52.4469" y2="35.4419" stroke="#6C948C" stroke-width="4" stroke-linecap="round"/>
+<line x1="18.4991" y1="48.4651" x2="52.4469" y2="48.4651" stroke="#6C948C" stroke-width="4" stroke-linecap="round"/>
 </svg>

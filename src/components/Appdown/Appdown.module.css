@@ -5,14 +5,14 @@
     padding: 50px 20px;
     text-align: center;
     border-radius: 15px;
-    margin: 50px auto;
+    margin: 80px auto;
     width: 90%;
-    max-width: 800px;
+    max-width: 900px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .title {
-    color: var(--color-primary-2);
+    color: var(--color-primary-1);
     font-family: var(--font-roboto);
     font-size: 34px;
     font-weight: 700;
@@ -20,7 +20,7 @@
 }
 
 .subtitle {
-    color: var(--color-primary-2);
+    color: var(--color-primary-1);
     font-family: var(--font-roboto);
     font-size: 24px;
     margin-bottom: 30px;

@@ -1,0 +1,147 @@
+@import "../../vars.css"; /* Mengimpor variabel warna */
+
+/* Kontainer utama Dashboard */
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 25px;
+  background-color: var(--color-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Judul dashboard */
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-primary-2);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Menu permainan */
+.gameMenu {
+  display: flex;
+  flex-wrap: wrap; /* Agar item permainan bisa berada di baris baru jika terlalu lebar */
+  gap: 20px;
+  justify-content: center; /* Menjaga agar item permainan rata tengah */
+  width: 100%;
+  max-width: 100%; /* Lebar menu hampir memenuhi layar */
+  padding: 10px 0; /* Mengurangi padding */
+  box-sizing: border-box;
+}
+
+/* Item permainan */
+.gameItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 280px; /* Maksimal lebar item permainan */
+  padding: 20px;
+  background-color: var(--color-primary-3);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gameItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Gambar permainan */
+.gameItem img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Tombol dalam item permainan */
+.gameButton {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--color-primary-2);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gameButton:hover {
+  background-color: var(--color-primary-1);
+}
+
+/* Navigasi bawah */
+.bottomNav {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--color-primary-4);
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navItem img {
+  width: 24px;
+  height: 24px;
+}
+
+.navItem:hover {
+  opacity: 0.8;
+}
+
+/* Responsif untuk tampilan mobile */
+@media screen and (max-width: 768px) {
+  .dashboardContainer {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .gameMenu {
+    flex-direction: row; /* Agar item permainan ditata dalam satu baris */
+    gap: 10px; /* Mengurangi jarak antar item permainan */
+    width: 100%; 
+    justify-content: space-around; /* Membuat game menu lebih tersebar */
+  }
+
+  .gameItem {
+    max-width: 40%; /* Memperbesar item permainan di layar kecil */
+  }
+
+  .gameButton {
+    font-size: 14px;
+  }
+
+  .bottomNav {
+    max-width: 100%;
+  }
+
+  .navItem img {
+    width: 30px;
+  }
+}

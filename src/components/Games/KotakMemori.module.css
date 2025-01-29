@@ -1,0 +1,155 @@
+@import "../../vars.css"; /* Mengimpor variabel warna */
+
+/* Kontainer utama sebagai bingkai */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%; /* Memperbesar ukuran container ke 100% */
+  min-height: 80vh; /* Menggunakan 90% tinggi layar */
+  margin: 20px auto; /* Menambah sedikit margin agar tidak terlalu rapat dengan tepi layar */
+  padding: 30px; /* Padding lebih besar agar lebih 'legowo' */
+  background-color: var(--color-bg);
+  border-radius: 16px; 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  border: 3px solid var(--color-primary-3);
+}
+
+/* Tambahkan gaya untuk body agar lebih estetik */
+body {
+  background-color: var(--color-secondary); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Judul permainan */
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-primary-1);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+/* Status level */
+.level, .round {
+  font-size: 18px;
+  color: var(--color-primary-4);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* Pesan status */
+.message {
+  font-size: 16px;
+  color: var(--color-error);
+  margin-top: 15px; 
+  font-style: italic;
+  text-align: center;
+  max-width: 80%;
+  margin: 10px auto;
+}
+
+/* Grid container */
+.grid {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  max-width: 350px; /* Ukuran grid yang lebih besar */
+  margin-top: 20px;
+  justify-content: center;
+}
+
+/* Sel grid */
+.gridCell {
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: var(--color-primary-3); 
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.5s ease, transform 0.2s ease;
+  position: relative;
+}
+
+/* Kotak sebelum muncul */
+.hidden {
+  background-color: var(--color-primary-4);
+}
+
+/* Kotak kuning setelah delay */
+.yellow {
+  background-color: var(--color-primary-1);
+}
+
+/* Kotak yang sudah dipilih */
+.selected {
+  border: 2px solid var(--color-primary-2);
+  background-color: var(--color-primary-3);
+}
+
+/* Kotak selesai permainan */
+.finished {
+  background-color: var(--color-primary-3) !important;
+}
+
+/* Responsif untuk mobile */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 25px; /* Padding lebih kecil agar responsif */
+    margin: 15px auto; /* Margin yang lebih kecil */
+  }
+
+  .title {
+    font-size: 28px; 
+  }
+
+  .grid {
+    max-width: 300px;
+    gap: 6px;
+  }
+
+  .level, .message {
+    font-size: 14px; 
+  }
+}
+
+/* Hover effect pada grid cell */
+.gridCell:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 255, 0.3);
+}
+
+/* Navigasi bawah */
+.bottomNav {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--color-primary-4);
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navItem img {
+  width: 24px;
+  height: 24px;
+}
+
+.navItem:hover {
+  opacity: 0.8;
+}

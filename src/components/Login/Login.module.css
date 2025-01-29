@@ -21,7 +21,7 @@
   font-size: 32px; /* Ukuran font yang lebih besar */
   font-weight: 600;
   color: var(--color-primary-2); /* Warna utama */
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   text-align: center; /* Membuat teks judul lebih terpusat */
 }
 
@@ -45,7 +45,7 @@
 }
 
 .inputField:focus {
-  border-color: var(--color-primary-2); /* Mengubah warna border saat fokus */
+  border-color: var(--color-primary-4); /* Mengubah warna border saat fokus */
   outline: none;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .submitButton:hover {
-  background-color: var(--color-primary-4); /* Warna saat hover */
+  background-color: var(--color-primary-1); /* Warna saat hover */
 }
 
 .submitButton:focus {
@@ -81,20 +81,43 @@
 
 /* Gambar di bawah judul */
 .heroImg {
-  width: 100%; /* Membuat gambar responsif secara horizontal */
-  max-width: 1200px; /* Menetapkan ukuran maksimum gambar di desktop */
+  width: 75%; /* Membuat gambar responsif secara horizontal */
+  max-width: 400px; /* Menetapkan ukuran maksimum gambar di desktop */
   height: auto; /* Menjaga proporsi gambar */
-  max-height: 700px; /* Membatasi tinggi maksimum gambar di desktop */
-  margin-top: 30px; /* Memberikan ruang di atas gambar */
+  max-height: 250px; /* Membatasi tinggi maksimum gambar di desktop */
+  /* margin-top: 2px; Memberikan ruang di atas gambar */
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* Tombol Kembali */
+.backButton {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--color-primary-2);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px; /* Menambahkan margin atas agar ada jarak dengan tombol utama */
+  transition: background-color 0.3s ease;
+}
+
+.backButton:hover {
+  background-color: var(--color-primary-1);
+}
+
+.backButton:focus {
+  outline: none;
+}
+
+
 /* Responsif untuk tampilan mobile */
 @media screen and (max-width: 830px) {
   .loginContainer {
-    max-width: 350px; /* Menyesuaikan lebar di tampilan mobile */
+    max-width: 400px; /* Menyesuaikan lebar di tampilan mobile */
     padding: 20px; /* Menyesuaikan padding untuk tampilan kecil */
   }
 

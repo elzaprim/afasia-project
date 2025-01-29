@@ -11,17 +11,16 @@ export const Hero = () => {
     return ( 
      <section className={styles.container}>
         <div className={styles.content}>
-            <h1 className={styles.title}>Halo, Saya Nama</h1>
-            <h2 className={styles.subtitle}>Kenalan dengan Nama</h2>
+            <h1 className={styles.title}>Hai, namaku Arimbi!</h1>
+            <h2 className={styles.subtitle}>Aku akan menjadi sahabat kesehatanmu di aplikasi ini.</h2>
             <p className={styles.description}>
-                Deskripsi mengenai maskot App. Bisa dituliskan
-                di bagian ini dalam satu paragraf.
+            Tugas utamaku adalah membantu kamu menjaga kesehatan dengan mudah dan nyaman.
             </p>
             <button onClick={scrollToFooter} className={styles.contactBtn}>
                 Hubungi Kami
             </button>
         </div>
-        <img src={getImageUrl("hero/hero.svg")} 
+        <img src={getImageUrl("arimbi/Salinan 11.png")} 
         alt="Hero image of me"
         className={styles.heroImg}
         />

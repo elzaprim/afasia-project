@@ -1,41 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react'; 
 import { getImageUrl } from '../../utils';
 import styles from "./About.module.css";
 
 export const About = () => {
+    const slides = [
+        {
+            image: "afasia/hero-afa.svg",
+            title: "For Better Life",
+            text: "Aku akan membantumu mengenal aplikasi ini. Mulai mengenal fitur-fitur pada aplikasi."
+        },
+        {
+            image: "afasia/blocks-abc 1.svg",
+            title: "Kataku",
+            text: "Menebak kata sesuai dengan pertanyaan"
+        },
+        {
+            image: "afasia/tic-tac-toe-flat 1.svg",
+            title: "Kotak Memori",
+            text: "Memilih posisi kotak putih pada matriks"
+        },
+        {
+            image: "afasia/cat-about.svg",
+            title: "Hewanku",
+            text: "Memilih  gambar hewan sesuai dengan urutannya"
+        }
+    ];
+
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    const nextSlide = () => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    };
+
     return (
         <section className={styles.container} id="about">
-            <h2 className={styles.title}>Tentang Aplikasi</h2>
+            <h2 className={styles.title}>Teman Afasia</h2>
             <div className={styles.content}>
                 <img
-                    src={getImageUrl("common/vision.svg")}
-                    alt="Ilustrasi keluarga dan dokter"
+                    src={getImageUrl(slides[currentSlide].image)}
+                    alt={slides[currentSlide].title}
                     className={styles.aboutImage}
                 />
-                <ul className={styles.aboutItems}>
-                    {/* Tentang Aplikasi */}
-                    <li className={styles.aboutItem} key="intro">
-                        <div className={styles.aboutItemText}>
-                            <h3>Kenalan dengan App</h3>
-                            <p>
-                                Deskripsi mengenai kegunaan App. Bisa dituliskan di bagian ini 
-                                dalam satu paragraf.
-                            </p>
-                        </div>
-                    </li>
-                    
-                    {/* Visi Kami */}
-                    <li className={styles.aboutItem} key="vision">
-                        <div className={styles.aboutItemText}>
-                            <h3>Visi Kami</h3>
-                            <p>
-                                Deskripsi mengenai Visi dari pembuatan App. Bisa dituliskan di 
-                                bagian ini dalam satu paragraf.
-                            </p>
-                        </div>
-                    </li>
-                </ul>
+                <div className={styles.aboutText}>
+                    <h3>{slides[currentSlide].title}</h3>
+                    <p>{slides[currentSlide].text}</p>
+                </div>
+                <div className={styles.navigation}>
+                    {currentSlide > 0 && (
+                        <button onClick={prevSlide}>Kembali</button>
+                    )}
+                    {currentSlide < slides.length - 1 && (
+                        <button onClick={nextSlide}>Selanjutnya</button>
+                    )}
+                </div>
             </div>
-        </section>                  
+        </section>
     );
 };

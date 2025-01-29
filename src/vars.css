@@ -1,16 +1,16 @@
 :root {
     /* Colors */
     --color-bg: #fff;
-    --color-primary-1: #001D3D; /* Warna kuning gelap */
-    --color-primary-2: #003566; /* Warna kuning sedang */
-    --color-primary-3: #CCA000; /* Warna kuning lebih terang */
-    --color-primary-4: #F0CB46; /* Warna kuning pastel */
-    --color-primary-5: #FFF2CC; /* Warna kuning sangat lembut */
-    --color-primary-6: #FFF9E6; /* Warna kuning hampir putih */
-    --color-secondary: #F6F6F6;
-    --color-error: #EB5858;
-    --color-add-1:  rgb(205, 205, 205);
-    --color-add-2: #00356627;
+    --color-primary-1: #4472D3; 
+    --color-primary-2: #7894CF; 
+    --color-primary-3: #C7CEF4; 
+    --color-primary-4: #F3CD6D; 
+    --color-primary-5: #F7DD9C; 
+    --color-primary-6: #F2D7D7; 
+    --color-secondary: #F7F7F7;
+    --color-error: #E86E6E;
+    --color-add-1:  #EF9A9A;
+    --color-add-2: #2D8077;
 
 
     /* Fonts */

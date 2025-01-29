@@ -26,7 +26,12 @@ export default defineConfig({
   server: {
     proxy: {
       // Proxy endpoint `/jadwal` ke URL API yang sesungguhnya
-      '/jadwal': 'https://77de-114-10-149-218.ngrok-free.app',
+      '/api': {
+        target: 'https://b2cwspp1-8000.asse.devtunnels.ms/jadwal', // URL server backend Anda
+        changeOrigin: true,
+        secure: false, // Jika server menggunakan HTTPS dengan sertifikat self-signed
+        rewrite: (path) => path.replace(/^\/api/, ''), // Menghapus prefix "/api" jika tidak dibutuhkan
+      },
     },
   },
 });

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom"; // Import useLocation
 import styles from "./Navbar.module.css";
 import { getImageUrl } from "../../utils";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation(); // Mengambil lokasi URL saat ini
+
+  // Cek apakah berada di halaman landing (misalnya path '/')
+  const isLandingPage = location.pathname === "/";
 
   // Fungsi untuk scroll ke bagian tertentu
   const scrollToSection = (id) => {
@@ -19,6 +23,10 @@ export const Navbar = () => {
     setMenuOpen(false); // Tutup menu setelah klik
   };
 
+  if (!isLandingPage) {
+    return null; // Jika bukan landing page, tidak menampilkan navbar
+  }
+
   return (
     <nav className={styles.navbar}>
       <a className={styles.title} href="/">
@@ -30,8 +38,8 @@ export const Navbar = () => {
           className={styles.menuBtn}
           src={
             menuOpen
-              ? getImageUrl("nav/closeIcon.svg")
-              : getImageUrl("nav/menuIcon.svg")
+              ? getImageUrl("afasia/close-icon.svg")
+              : getImageUrl("afasia/menu-1.svg")
           }
           alt="menu-button"
           onClick={() => setMenuOpen(!menuOpen)}

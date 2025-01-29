@@ -1,0 +1,34 @@
+{
+    "success": true,
+    "message": "List Semua Jadwal",
+    "data": [
+      {
+        "id": 2,
+        "no_rekam_medis": "9870172723",
+        "id_dokter": "6",
+        "tanggal": "2025-01-30",
+        "status": "hadir"
+      },
+      {
+        "id": 3,
+        "no_rekam_medis": "1233123312",
+        "id_dokter": "100",
+        "tanggal": "2025-03-03",
+        "status": "hadir"
+      },
+      {
+        "id": 4,
+        "no_rekam_medis": "09189273",
+        "id_dokter": "99",
+        "tanggal": "2025-05-22",
+        "status": "hadir"
+      },
+      {
+        "id": 5,
+        "no_rekam_medis": "2020202020",
+        "id_dokter": "2",
+        "tanggal": "2025-01-16",
+        "status": "hadir"
+      }
+    ]
+  }

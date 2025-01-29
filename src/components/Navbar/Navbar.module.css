@@ -44,7 +44,7 @@
 }
 
 .menuItems a:hover {
-  color: var(--color-secondary-1); /* Warna hover */
+  color: var(--color-primary-2); /* Warna hover */
 }
 
 /* Tombol Menu Hamburger (Mobile) */

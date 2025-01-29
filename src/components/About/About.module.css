@@ -2,94 +2,137 @@
 
 .container {
     position: relative;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: var(--color-secondary);
     border-radius: 15px;
-    padding: 73px;
-    margin-top: 129px;
-    z-index: 1;
-    margin-left: 10%;
-    margin-right: 10%;
+    padding: 50px;
+    margin: 80px auto;
+    width: 100%;
+    text-align: center;
 }
 
 .title {
     color: var(--color-primary-2);
-    font-size: 34px;
+    font-size: 38px;
     font-weight: 700;
-    letter-spacing: 1.75px;
-    /* text-transform: uppercase; */
-    text-align: center; /* Menempatkan teks di tengah secara horizontal */
+    letter-spacing: 1.5px;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    gap: 30px; /* Menambahkan jarak antara gambar dan teks */
+    gap: 15px; /* Reduced gap between elements */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .aboutImage {
-    display: block; /* Mengubah gambar menjadi elemen blok */
-    width: 100%; /* Mengurangi ukuran menjadi 50% dari kontainer induk */
-    max-width: 500px; /* Batas maksimal lebar gambar */
-    height: auto; /* Mempertahankan aspek rasio */
-    border-radius: 10px; /* Opsional, menambahkan sudut melengkung */
-    margin: 20px auto; /* Menambahkan margin agar gambar terpusat */
+    width: 100%;
+    max-width: 400px; /* Increased the image size */
+    height: auto;
+    max-height: 220px; /* Increased height */
+    object-fit: contain;
+    display: block;
+    border-radius: 10px;
+    animation: bounce 2s infinite;
+    margin-bottom: -5px; /* Reduced gap between image and text */
 }
 
-.aboutItems {
-    color: var(--color-primary-2);
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.aboutText {
+    max-width: 800px;
+    font-size: 22px;
+    color: var(--color-primary-1);
+    margin-top: -10px; /* Reduced gap between text and image */
+    background: rgba(255, 255, 255, 0.8);
+    padding: 8px 12px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    animation: fadeIn 1.5s ease-in-out;
+    position: relative;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Navigation buttons */
+.navigation {
     display: flex;
-    flex-direction: column;
-    gap: 50px;
+    justify-content: center; /* Center buttons horizontally */
+    gap: 20px; /* Increased gap between buttons */
+    margin-top: 1px; /* Reduced top margin */
+    padding: 10px 0; /* Reduced padding */
+    flex-wrap: wrap; /* Buttons wrap on small screens */
 }
 
-.aboutItem {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 20px;
-    list-style: none;
-    padding: 25px;
-    background-image: linear-gradient(
-        90deg,
-        rgb(240, 203, 70) 10%,
-        rgba(160, 149, 193, 0) 120%
-    );
-    background-size: 0 100%;
-    background-repeat: no-repeat;
-    transition: 0.4s;
-}
-
-.aboutItem:hover {
-    background-size: 100% 100%;
-}
-
-.aboutItem h3 {
-    font-size: 25px;
+.navigation button {
+    text-decoration: none;
+    background-color: var(--color-primary-4);
+    color: var(--color-primary-1);
+    border-radius: 100px;
+    font-size: 24px;
     font-weight: 600;
+    padding: 17px 26px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border: none;
+    display: inline-block;
+    transition: all 0.3s ease;
 }
 
-.aboutItem p {
-    font-size: 25px;
+/* Remove outline on focus */
+.navigation button:focus {
+    outline: none;
+    box-shadow: none; /* Remove default focus shadow */
 }
 
+/* Hover effect */
+.navigation button:hover {
+    background-color: #e5c685; /* Darker color on hover */
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Media query adjustments */
 @media screen and (max-width: 830px) {
     .container {
-        background-color: rgba(255, 255, 255, 0.7); /* Memastikan background tetap terlihat (tidak transparan) */
-        padding-left: 10%; /* Menambah padding kiri */
-        padding-right: 10%; /* Menambah padding kanan */
-    }
-    
-    .content {
-        flex-direction: column; /* Menyusun konten secara kolom */
+        width: 100%;
+        padding: 30px;
     }
 
-    .aboutItems {
-        margin-top: 29px;
+    .aboutText {
+        font-size: 20px;
+        margin-top: -8px;
     }
 
-    .aboutItem {
-        padding-left: 0;
-        padding-right: 0;
+    .navigation {
+        gap: 15px;
+        padding: 10px 0;
+        justify-content: center; /* Center buttons on mobile */
     }
+
+    .navigation button {
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+
 }
