@@ -1,0 +1,250 @@
+@import "../../vars.css"; /* Mengimpor variabel warna */
+
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Kontainer utama */
+/* Kontainer utama */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 650px; /* Mengatur lebar tetap untuk kotak */
+  height: auto; /* Agar tinggi kontainer disesuaikan dengan konten */
+  min-height: 80vh;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: var(--color-bg);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  border: 3px solid var(--color-primary-3);
+}
+
+
+/* Tampilan body */
+body {
+  background-color: var(--color-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Judul */
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--color-primary-1);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 10px; /* Jarak antar kotak */
+  grid-template-columns: repeat(2, 1fr); /* Dua kolom untuk dua gambar per baris */
+  grid-template-rows: auto auto; /* Mengatur baris otomatis */
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  max-width: 650px;  /* Sesuaikan lebar grid */
+  margin: 15px auto;
+}
+
+/* Sel grid - Pastikan gambar berada di tengah */
+.gridCell {
+  width: 100%;  /* Ukuran kotak grid */
+  padding-bottom: 100%; /* Menjaga rasio aspek kotak */
+  background-color: var(--color-primary-3);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center; /* Horizontally center the image */
+  align-items: center; /* Vertically center the image */
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+/* Hover efek pada sel grid */
+.gridCell:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 255, 0.3);
+}
+
+/* Menambahkan nomor urut di dalam kotak */
+.gridCell::before {
+  content: attr(data-number); /* Menampilkan nomor urut di dalam kotak */
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Gambar di dalam kotak */
+.gridCell img {
+  width: 100%;  /* Memperbesar gambar agar terlihat lebih besar */
+  height: 100%; /* Menyesuaikan tinggi gambar agar lebih besar */
+  object-fit: contain; /* Menyesuaikan gambar agar memenuhi kotak tanpa terdistorsi */
+  border-radius: 6px;
+}
+
+/* Image in the grid (initial display) */
+.gridImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure images fill the cell properly */
+  border-radius: 6px;
+  justify-content: center; /* Horizontally center the image */
+  align-items: center; /* Vertically center the image */
+}
+
+/* Image in the drop zone */
+.dropZoneImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure proper fitting without distortion */
+  border-radius: 6px;
+}
+
+/* Image options in the lower part of the screen */
+.imageOption {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: 5px;
+}
+
+/* Gambar di dalam drop zone */
+.drop-zone img {
+  width: 100%; /* Menyesuaikan lebar gambar agar sesuai dengan kotak */
+  height: 100%; /* Menyesuaikan tinggi gambar agar sesuai dengan kotak */
+  object-fit: contain; /* Menjaga proporsi gambar agar tidak keluar */
+  border-radius: 6px;
+}
+
+/* Kotak untuk drop zone */
+.dropZone {
+  width: 100px;
+  height: 100px;
+  border: 2px dashed #888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  position: relative;
+}
+
+.dropZone.filled {
+  border: 2px solid green;
+  background-color: #f0f8ff;
+}
+
+/* Angka urut di dalam kotak */
+.orderNumber {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Wrapper untuk tombol submit agar bisa di tengah */
+.submitButtonContainer {
+  display: flex;
+  justify-content: center;  /* Menyusun tombol secara horizontal di tengah */
+  margin-top: 20px; /* Memberi jarak dari konten sebelumnya */
+  margin-bottom: 10px;
+}
+
+/* Submit button style */
+.submitButton {
+  padding: 10px 20px; /* Make the button larger */
+  font-size: 15px; /* Increase font size */
+  background-color: var(--color-primary-1);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: var(--color-primary-2); /* Darken button on hover */
+}
+
+/* Responsif untuk Mobile */
+@media screen and (max-width: 768px) {
+  .container {
+    text-align: center;
+    width: 90%; /* Menyesuaikan lebar kontainer agar tidak terlalu besar pada layar kecil */
+    max-width: 650px; /* Membatasi lebar maksimal */
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .grid {
+    max-width: 325px;
+    gap: 10px;
+  }
+
+  .level, .message {
+    font-size: 14px;
+  }
+
+  .bottomNav {
+    padding: 10px 0;
+  }
+
+  .navItem img {
+    width: 15px;
+    height: 15px;
+  }
+  
+}
+/* Navigasi bawah */
+.bottomNav {
+  display: flex;
+  justify-content: space-around;
+  position: static;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--color-primary-4);
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navItem img {
+  width: 24px;
+  height: 24px;
+}
+
+.navItem:hover {
+  opacity: 0.8;
+}
