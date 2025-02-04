@@ -31,6 +31,12 @@ const Dashboard = () => {
           <img src="/assets/afasia/tic-tac-toe-flat 1.svg" alt="Kotak Memori" />
           <button className={styles.gameButton}>Kotak Memori</button>
         </div>
+
+        <div className={styles.gameItem} onClick={() => navigate("/progressku")}>
+          <img src="/assets/afasia/star.svg" alt="Progressku" />
+          <button className={styles.gameButton}>Progressku</button>
+        </div>
+
       </div>
 
       <nav className={styles.bottomNav}>

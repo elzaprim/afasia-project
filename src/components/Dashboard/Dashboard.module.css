@@ -43,27 +43,26 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 280px; /* Maksimal lebar item permainan */
+  max-width: 280px;
   padding: 20px;
   background-color: var(--color-primary-3);
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-}
-
-.gameItem:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  flex-grow: 1; /* Agar semua item memiliki tinggi yang sama */
+  justify-content: space-between; /* Menjaga tombol tetap di bawah */
 }
 
 /* Gambar permainan */
 .gameItem img {
   width: 100%;
   max-width: 200px;
+  min-height: 150px; /* Tambahkan tinggi minimum */
   height: auto;
   border-radius: 8px;
   margin-bottom: 10px;
+  object-fit: cover; /* Menyesuaikan gambar agar tidak terdistorsi */
 }
 
 /* Tombol dalam item permainan */
@@ -77,6 +76,7 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  flex-shrink: 0; /* Mencegah tombol menyusut */
 }
 
 .gameButton:hover {
@@ -124,13 +124,13 @@
 
   .gameMenu {
     flex-direction: row; /* Agar item permainan ditata dalam satu baris */
-    gap: 10px; /* Mengurangi jarak antar item permainan */
+    gap: 20px; /* Mengurangi jarak antar item permainan */
     width: 100%; 
     justify-content: space-around; /* Membuat game menu lebih tersebar */
   }
 
   .gameItem {
-    max-width: 40%; /* Memperbesar item permainan di layar kecil */
+    max-width: 50%; /* Memperbesar item permainan di layar kecil */
   }
 
   .gameButton {
