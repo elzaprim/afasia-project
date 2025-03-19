@@ -12,25 +12,43 @@ const images = [
 function Hewanku() {
   const [correctOrder, setCorrectOrder] = useState([]);
   const [userOrder, setUserOrder] = useState(Array(images.length).fill(null));
-  const [showImages, setShowImages] = useState(true);
+  const [showImages, setShowImages] = useState(false);
   const [currentLevel, setCurrentLevel] = useState(1);
   const [score, setScore] = useState(0);
-  const navigate = useNavigate();  // Added navigate hook
+  const [gameStarted, setGameStarted] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const [isWrongAnswer, setIsWrongAnswer] = useState(false); // State baru
+  const navigate = useNavigate();
 
   useEffect(() => {
-    startGame();
+    generateQuestion();
   }, []);
 
   const startGame = () => {
-    generateQuestion();
+    setGameStarted(true);
     setUserOrder(Array(images.length).fill(null));
     setShowImages(true);
-    setTimeout(() => setShowImages(false), 5000); // Menyembunyikan gambar setelah beberapa detik
+    setTimeout(() => setShowImages(false), 5000);
   };
 
   const generateQuestion = () => {
     let shuffled = [...Array(images.length).keys()].sort(() => Math.random() - 0.5);
     setCorrectOrder(shuffled);
+    setUserOrder(Array(images.length).fill(null));
+  };
+
+  const handleRetry = () => {
+    setIsWrongAnswer(false);
+    setUserOrder(Array(images.length).fill(null));
+    generateQuestion();
+  };
+
+  const resetGame = () => {
+    setCurrentLevel(1);
+    setScore(0);
+    setGameOver(false);
+    setIsWrongAnswer(false);
+    generateQuestion();
   };
 
   const submitAnswer = () => {
@@ -42,22 +60,39 @@ function Hewanku() {
       if (currentLevel < 5) {
         setCurrentLevel(currentLevel + 1);
         setScore(score + 1);
-        startGame();
+        generateQuestion();
+        setShowImages(true);
+        setTimeout(() => setShowImages(false), 5000);
       } else {
-        alert('Selamat! Anda telah menyelesaikan semua level!');
+        setGameOver(true);
       }
     } else {
-      alert(`Game Over! Anda mencapai level ${score}.`);
+      setIsWrongAnswer(true);
     }
   };
 
   return (
-    <div>
-      <h2>Hewanku - Level {currentLevel}</h2>
-      {showImages ? (
+    <div className={styles.container}>
+      {isWrongAnswer ? (
+        <div className={styles.errorPage}>
+          <h3>Yah :(. Coba Lagi Yuk!</h3>
+          <p>Anda mencapai level {score}.</p>
+          <button onClick={handleRetry} className={styles.submitButton}>Ulangi Lagi</button>
+        </div>
+      ) : gameOver ? (
+        <div>
+          <h3>Selamat! Anda telah menyelesaikan permainan!</h3>
+          <p>Skor Anda: {score}</p>
+          <button onClick={resetGame} className={styles.submitButton}>Main Lagi</button>
+        </div>
+      ) : !gameStarted ? (
+        <div>
+          <p>Permainan ini menguji ingatan Anda! Hafalkan urutan gambar yang muncul, lalu susun kembali dalam urutan yang benar.</p>
+          <button onClick={startGame} className={styles.submitButton}>Mulai</button>
+        </div>
+      ) : showImages ? (
         <div>
           <h3>Hafalkan Urutannya!</h3>
-          {/* Menampilkan gambar dalam grid */}
           <div className={styles.grid}>
             {correctOrder.map((index, i) => (
               <div key={i} className={styles.gridCell} data-number={i + 1}>
@@ -73,7 +108,6 @@ function Hewanku() {
       ) : (
         <div>
           <h3>Pindahkan gambar ke urutan yang benar:</h3>
-          {/* Kotak jawaban */}
           <div className={styles.grid}>
             {userOrder.map((imageIndex, i) => (
               <div 
@@ -100,7 +134,6 @@ function Hewanku() {
               </div>
             ))}
           </div>
-          {/* Grid untuk pilihan gambar */}
           <div className={styles.grid}>
             {images.map((src, index) => (
               <img 
@@ -113,20 +146,15 @@ function Hewanku() {
               />
             ))}
           </div>
+          <div className={styles.submitButtonContainer}>
+            <button onClick={submitAnswer} className={styles.submitButton}>Cek Jawaban</button>
+          </div>
         </div>
       )}
-      <div className={styles.submitButtonContainer}>
-        <button onClick={submitAnswer} className={styles.submitButton}>Submit</button>
-      </div>
 
-      {/* Bottom navigation */}
       <nav className={styles.bottomNav}>
-        <div className={styles.navItem} onClick={() => navigate("/")}>
-          <img src="/assets/afasia/menu.svg" alt="Home" />
-        </div>
-        <div className={styles.navItem} onClick={() => navigate(-1)}>
-          <img src="/assets/afasia/arrow-left.svg" alt="Back" />
-        </div>
+        <div className={styles.navItem} onClick={() => navigate("/")}> <img src="/assets/afasia/menu.svg" alt="Home" /> </div>
+        <div className={styles.navItem} onClick={() => navigate(-1)}> <img src="/assets/afasia/arrow-left.svg" alt="Back" /> </div>
       </nav>
     </div>
   );

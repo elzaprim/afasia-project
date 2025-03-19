@@ -225,7 +225,7 @@ body {
 .bottomNav {
   display: flex;
   justify-content: space-around;
-  position: static;
+  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: var(--color-primary-4);
