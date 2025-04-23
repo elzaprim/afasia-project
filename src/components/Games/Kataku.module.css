@@ -62,6 +62,27 @@ body {
   max-width: 80%;
 }
 
+/* Gambar Umum */
+.image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 20px auto;
+}
+
+/* Gambar di dalam gridCell */
+.gridCell img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+}
+
 /* Grid */
 .grid {
   display: grid;
@@ -123,25 +144,26 @@ body {
 .navItem:hover {
   opacity: 0.8;
 }
+
 /* Responsif untuk Mobile */
 @media screen and (max-width: 768px) {
   .container {
     text-align: center;
   }
-  
+
   .title {
     font-size: 2rem;
     margin-bottom: 20px;
   }
-  
+
   .answersContainer {
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-template-columns: repeat(2, 1fr); /* Dua kolom */
     margin-top: 20px;
     width: 100%;
   }
-  
+
   .answerButton {
     margin: 5px;
     padding: 12px 20px;
@@ -151,38 +173,34 @@ body {
     background-color: #f0f0f0;
     transition: background-color 0.3s;
   }
-  
+
   .answerButton:hover {
     background-color: #ddd;
   }
-  
+
   .selected {
     background-color: lightblue;
   }
-  
+
   .correct {
     background-color: green;
     color: white;
   }
-  
+
   .incorrect {
     background-color: red;
     color: white;
   }
-  
+
   .feedback {
     margin-top: 10px;
   }
-  
+
+  /* Ukuran gambar tetap proporsional */
   .image {
-    width: 100%;
     max-width: 300px;
-    height: auto;
-    object-fit: contain;
-    margin: 20px auto;
   }
-  
-  /* Increase the size of submit and next buttons */
+
   .submitButton, .nextButton {
     padding: 15px 30px;
     font-size: 1.5rem;
@@ -193,48 +211,9 @@ body {
     border: none;
     transition: background-color 0.3s;
   }
-  
+
   .submitButton:hover, .nextButton:hover {
     background-color: #a0459e;
-  }
-  
-  /* Navigasi bawah */
-.bottomNav {
-  display: flex;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--color-primary-4);
-  padding: 10px 0;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.navItem img {
-  width: 24px;
-  height: 24px;
-}
-
-.navItem:hover {
-  opacity: 0.8;
-}
-  
-  
-
-  .grid {
-    max-width: 280px;
-    gap: 6px;
-  }
-
-  .level, .message {
-    font-size: 14px;
   }
 
   .bottomNav {
@@ -244,5 +223,14 @@ body {
   .navItem img {
     width: 15px;
     height: 15px;
+  }
+
+  .grid {
+    max-width: 280px;
+    gap: 6px;
+  }
+
+  .level, .message {
+    font-size: 14px;
   }
 }

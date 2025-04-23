@@ -17,7 +17,7 @@ function Hewanku() {
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [isWrongAnswer, setIsWrongAnswer] = useState(false); // State baru
+  const [isWrongAnswer, setIsWrongAnswer] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -71,6 +71,12 @@ function Hewanku() {
     }
   };
 
+  const removeImageFromDropZone = (indexToClear) => {
+    const newOrder = [...userOrder];
+    newOrder[indexToClear] = null;
+    setUserOrder(newOrder);
+  };
+
   return (
     <div className={styles.container}>
       {isWrongAnswer ? (
@@ -114,9 +120,12 @@ function Hewanku() {
                 key={i} 
                 className={`${styles.dropZone} ${imageIndex !== null ? styles.filled : ''}`} 
                 onDrop={(e) => {
-                  let data = e.dataTransfer.getData("text");
-                  let newUserOrder = [...userOrder];
-                  newUserOrder[i] = Number(data);
+                  e.preventDefault();
+                  const data = e.dataTransfer.getData("text");
+                  const draggedIndex = Number(data);
+                  if (userOrder.includes(draggedIndex)) return; // Mencegah gambar digunakan dua kali
+                  const newUserOrder = [...userOrder];
+                  newUserOrder[i] = draggedIndex;
                   setUserOrder(newUserOrder);
                 }} 
                 onDragOver={(e) => e.preventDefault()}
@@ -126,10 +135,11 @@ function Hewanku() {
                     src={images[imageIndex]} 
                     alt={`selected ${i + 1}`} 
                     className={styles.dropZoneImage}
+                    onClick={() => removeImageFromDropZone(i)}
+                    title="Klik untuk hapus gambar"
+                    style={{ cursor: "pointer" }}
                   />
-                ) : (
-                  ''
-                )}
+                ) : null}
                 <div className={styles.orderNumber}>{i + 1}</div>
               </div>
             ))}
@@ -141,8 +151,8 @@ function Hewanku() {
                 src={src} 
                 alt={`option ${index + 1}`} 
                 className={styles.imageOption}
-                draggable 
-                onDragStart={(e) => e.dataTransfer.setData("text", index)} 
+                draggable
+                onDragStart={(e) => e.dataTransfer.setData("text", index)}
               />
             ))}
           </div>

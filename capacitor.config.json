@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.app",
+  "appName": "Aphasia Games App",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
