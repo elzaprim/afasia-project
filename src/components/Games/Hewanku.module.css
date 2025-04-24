@@ -1,23 +1,21 @@
-@import "../../vars.css"; /* Mengimpor variabel warna */
+@import "../../vars.css";
 
-/* Reset dasar */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Kontainer utama */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 650px;
-  height: auto;
+  width: 100%;
+  max-width: 650px;
   min-height: 80vh;
   margin: 20px auto;
-  padding: 10px;
+  padding: 16px;
   background-color: var(--color-bg);
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -26,7 +24,6 @@
   border: 3px solid var(--color-primary-3);
 }
 
-/* Tampilan body */
 body {
   background-color: var(--color-secondary);
   display: flex;
@@ -35,7 +32,6 @@ body {
   min-height: 100vh;
 }
 
-/* Judul */
 .title {
   font-size: 30px;
   font-weight: 700;
@@ -44,20 +40,16 @@ body {
   letter-spacing: 1px;
 }
 
-/* Grid */
 .grid {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto auto;
   justify-content: center;
-  align-items: center;
-  width: 80%;
-  max-width: 650px;
+  width: 100%;
+  max-width: 500px;
   margin: 15px auto;
 }
 
-/* Sel grid */
 .gridCell {
   width: 100%;
   padding-bottom: 100%;
@@ -67,7 +59,6 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  transition: transform 0.3s ease-in-out;
   position: relative;
 }
 
@@ -89,64 +80,38 @@ body {
   border-radius: 5px;
 }
 
-/* Gambar dalam grid cell */
-.gridCell img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 6px;
-  user-drag: auto;
-  -webkit-user-drag: auto;
-  pointer-events: auto;
-}
-
-/* Image in the grid */
-.gridImage {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 6px;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Image in the drop zone */
-.dropZoneImage {
+.gridImage, .dropZoneImage {
   width: 100%;
   height: 100%;
   object-fit: contain;
   border-radius: 6px;
 }
 
-/* Image options */
 .imageOption {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
-  margin: 5px;
-}
-
-/* Gambar di dalam drop zone */
-.drop-zone img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  margin: 8px;
   border-radius: 6px;
-  user-drag: auto;
-  -webkit-user-drag: auto;
-  pointer-events: auto;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
 }
 
-/* Drop zone box */
+.imageOption:active {
+  border-color: var(--color-primary-1);
+}
+
 .dropZone {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border: 2px dashed #888;
+  background-color: #fefefe;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin: 8px;
   position: relative;
+  border-radius: 8px;
 }
 
 .dropZone.filled {
@@ -154,7 +119,6 @@ body {
   background-color: #f0f8ff;
 }
 
-/* Angka urut */
 .orderNumber {
   position: absolute;
   top: 5px;
@@ -167,12 +131,10 @@ body {
   border-radius: 5px;
 }
 
-/* Tombol submit */
 .submitButtonContainer {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  margin-bottom: 10px;
 }
 
 .submitButton {
@@ -190,39 +152,6 @@ body {
   background-color: var(--color-primary-2);
 }
 
-/* Responsif */
-@media screen and (max-width: 768px) {
-  .container {
-    text-align: center;
-    width: 90%;
-    max-width: 650px;
-  }
-
-  .title {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  .grid {
-    max-width: 325px;
-    gap: 10px;
-  }
-
-  .level, .message {
-    font-size: 14px;
-  }
-
-  .bottomNav {
-    padding: 10px 0;
-  }
-
-  .navItem img {
-    width: 15px;
-    height: 15px;
-  }
-}
-
-/* Navigasi bawah */
 .bottomNav {
   display: flex;
   justify-content: space-around;
@@ -248,4 +177,46 @@ body {
 
 .navItem:hover {
   opacity: 0.8;
+}
+
+/* --- Tambahan untuk Drag and Drop Kit --- */
+.draggable {
+  touch-action: none;
+}
+
+.sortable-item {
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+.sortable-item:active {
+  cursor: grabbing;
+}
+
+/* Responsif */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 12px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 320px;
+  }
+
+  .imageOption, .dropZone {
+    width: 75px;
+    height: 75px;
+  }
+
+  .submitButton {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .navItem img {
+    width: 20px;
+    height: 20px;
+  }
 }

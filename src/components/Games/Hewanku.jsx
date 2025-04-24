@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import styles from "./Hewanku.module.css";
+import {
+  DndContext,
+  useDraggable,
+  useDroppable,
+} from '@dnd-kit/core';
 
 const images = [
   '/assets/afasia/Lion Transparant.png',
@@ -8,6 +13,52 @@ const images = [
   '/assets/afasia/Cow Transparant.png',
   '/assets/afasia/Snake Transparant.png',
 ];
+
+// Komponen draggable
+function DraggableImage({ id, src }) {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
+  const style = {
+    transform: transform ? `translate(${transform.x}px, ${transform.y}px)` : undefined,
+    touchAction: 'none',
+    cursor: 'grab',
+  };
+
+  return (
+    <img
+      ref={setNodeRef}
+      {...listeners}
+      {...attributes}
+      src={src}
+      alt={`option ${id}`}
+      style={style}
+      className={styles.imageOption}
+    />
+  );
+}
+
+// Komponen droppable
+function DropZone({ id, imageIndex, onRemove }) {
+  const { setNodeRef } = useDroppable({ id });
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={`${styles.dropZone} ${imageIndex !== null ? styles.filled : ''}`}
+    >
+      {imageIndex !== null ? (
+        <img
+          src={images[imageIndex]}
+          alt={`selected ${id + 1}`}
+          className={styles.dropZoneImage}
+          onClick={() => onRemove(id)}
+          title="Klik untuk hapus gambar"
+          style={{ cursor: "pointer" }}
+        />
+      ) : null}
+      <div className={styles.orderNumber}>{Number(id) + 1}</div>
+    </div>
+  );
+}
 
 function Hewanku() {
   const [correctOrder, setCorrectOrder] = useState([]);
@@ -112,54 +163,37 @@ function Hewanku() {
           </div>
         </div>
       ) : (
-        <div>
-          <h3>Pindahkan gambar ke urutan yang benar:</h3>
-          <div className={styles.grid}>
-            {userOrder.map((imageIndex, i) => (
-              <div 
-                key={i} 
-                className={`${styles.dropZone} ${imageIndex !== null ? styles.filled : ''}`} 
-                onDrop={(e) => {
-                  e.preventDefault();
-                  const data = e.dataTransfer.getData("text");
-                  const draggedIndex = Number(data);
-                  if (userOrder.includes(draggedIndex)) return; // Mencegah gambar digunakan dua kali
-                  const newUserOrder = [...userOrder];
-                  newUserOrder[i] = draggedIndex;
-                  setUserOrder(newUserOrder);
-                }} 
-                onDragOver={(e) => e.preventDefault()}
-              >
-                {imageIndex !== null ? (
-                  <img 
-                    src={images[imageIndex]} 
-                    alt={`selected ${i + 1}`} 
-                    className={styles.dropZoneImage}
-                    onClick={() => removeImageFromDropZone(i)}
-                    title="Klik untuk hapus gambar"
-                    style={{ cursor: "pointer" }}
-                  />
-                ) : null}
-                <div className={styles.orderNumber}>{i + 1}</div>
-              </div>
-            ))}
+        <DndContext
+          onDragEnd={({ active, over }) => {
+            if (over && !userOrder.includes(Number(active.id))) {
+              const newOrder = [...userOrder];
+              newOrder[Number(over.id)] = Number(active.id);
+              setUserOrder(newOrder);
+            }
+          }}
+        >
+          <div>
+            <h3>Pindahkan gambar ke urutan yang benar:</h3>
+            <div className={styles.grid}>
+              {userOrder.map((imageIndex, i) => (
+                <DropZone
+                  key={i}
+                  id={i.toString()}
+                  imageIndex={imageIndex}
+                  onRemove={removeImageFromDropZone}
+                />
+              ))}
+            </div>
+            <div className={styles.grid}>
+              {images.map((src, index) => (
+                <DraggableImage key={index} id={index.toString()} src={src} />
+              ))}
+            </div>
+            <div className={styles.submitButtonContainer}>
+              <button onClick={submitAnswer} className={styles.submitButton}>Cek Jawaban</button>
+            </div>
           </div>
-          <div className={styles.grid}>
-            {images.map((src, index) => (
-              <img 
-                key={index} 
-                src={src} 
-                alt={`option ${index + 1}`} 
-                className={styles.imageOption}
-                draggable
-                onDragStart={(e) => e.dataTransfer.setData("text", index)}
-              />
-            ))}
-          </div>
-          <div className={styles.submitButtonContainer}>
-            <button onClick={submitAnswer} className={styles.submitButton}>Cek Jawaban</button>
-          </div>
-        </div>
+        </DndContext>
       )}
 
       <nav className={styles.bottomNav}>
