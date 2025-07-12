@@ -129,7 +129,7 @@ const Progressku = () => {
             {scores.map((game) => (
               <div key={game.id} className={styles.scoreItem}>
                 <h3 className={styles.gameName}>{game.name}</h3>
-                <p className={styles.score}>Skor Hari Ini: {game.score}/{game.maxScore}</p>
+                <p className={styles.score}>Skor: {game.score}/{game.maxScore}</p>
                 <button className={styles.historyButton} onClick={() => handleViewHistory(game)}>
                   Lihat Riwayat
                 </button>

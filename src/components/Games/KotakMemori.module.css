@@ -1,155 +1,144 @@
-@import "../../vars.css"; /* Mengimpor variabel warna */
+/* =======================================================
+   MemoryGrid.module.css – align with Hewanku (biru)
+   ======================================================= */
 
-/* Kontainer utama sebagai bingkai */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 100%; /* Memperbesar ukuran container ke 100% */
-  min-height: 80vh; /* Menggunakan 90% tinggi layar */
-  margin: 20px auto; /* Menambah sedikit margin agar tidak terlalu rapat dengan tepi layar */
-  padding: 30px; /* Padding lebih besar agar lebih 'legowo' */
-  background-color: var(--color-bg);
-  border-radius: 16px; 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  font-family: "Arial", sans-serif;
-  text-align: center;
-  border: 3px solid var(--color-primary-3);
-}
+@import "../../vars.css";
 
-/* Tambahkan gaya untuk body agar lebih estetik */
+/* ---------- RESET & BODY ------------------------------ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-  background-color: var(--color-secondary); 
+  background: var(--color-secondary);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-/* Judul permainan */
+/* ---------- CONTAINER --------------------------------- */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 650px;
+  min-height: 80vh;
+  margin: 20px auto;
+  padding: 30px;
+  background: var(--color-bg);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.1);
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  border: 3px solid var(--color-primary-3);
+}
+
+/* ---------- JUDUL & STATUS ---------------------------- */
 .title {
-  font-size: 32px;
+  font-size: clamp(2rem, 6vw, 2.6rem);
   font-weight: 600;
   color: var(--color-primary-1);
   margin-bottom: 15px;
   letter-spacing: 1px;
 }
 
-/* Status level */
 .level, .round {
-  font-size: 18px;
+  font-size: clamp(1.1rem, 3.8vw, 1.3rem);
   color: var(--color-primary-4);
   font-weight: 500;
   margin-bottom: 8px;
 }
 
-/* Pesan status */
-.message {
-  font-size: 16px;
-  color: var(--color-error);
-  margin-top: 15px; 
-  font-style: italic;
-  text-align: center;
-  max-width: 80%;
-  margin: 10px auto;
+/* ---------- INSTRUKSI BESAR --------------------------- */
+.instruction {
+  font-size: clamp(1rem, 4vw, 1.4rem);   /* diperkecil */
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  color: #000;                           /* ganti ke hitam */
+  max-width: 600px;
 }
 
-/* Grid container */
+
+/* ---------- TOMBOL MULAI (gaya Hewanku) --------------- */
+.startButton {
+  padding: clamp(14px, 4vw, 20px) clamp(28px, 7vw, 48px);
+  font-size: clamp(1.2rem, 4.6vw, 1.6rem);
+  background: var(--color-primary-1);       /* biru utama */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color .3s, transform .15s;
+}
+.startButton:hover  { background: var(--color-primary-2); transform: translateY(-2px); }
+.startButton:active { transform: translateY(0); }
+
+/* ---------- PESAN KESALAHAN --------------------------- */
+.message {
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  color: var(--color-error);
+  max-width: 80%;
+  margin: 12px auto;
+  font-style: italic;
+}
+
+/* ---------- GRID -------------------------------------- */
 .grid {
   display: grid;
   gap: 8px;
   width: 100%;
-  max-width: 350px; /* Ukuran grid yang lebih besar */
+  max-width: 500px;
   margin-top: 20px;
   justify-content: center;
 }
 
-/* Sel grid */
 .gridCell {
   width: 100%;
   padding-bottom: 100%;
-  background-color: var(--color-primary-3); 
+  background: var(--color-primary-3);
   border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.5s ease, transform 0.2s ease;
   position: relative;
+  cursor: pointer;
+  transition: background-color .5s ease, transform .2s ease;
 }
+.gridCell:hover { transform: scale(1.05); box-shadow: 0 4px 8px rgba(0,0,255,.3); }
 
-/* Kotak sebelum muncul */
-.hidden {
-  background-color: var(--color-primary-4);
-}
+/* status warna */
+.hidden   { background: var(--color-primary-4); }
+.yellow   { background: var(--color-primary-1); }
+.selected { border: 2px solid var(--color-primary-2); }
+.finished { background: var(--color-primary-3) !important; }
 
-/* Kotak kuning setelah delay */
-.yellow {
-  background-color: var(--color-primary-1);
-}
-
-/* Kotak yang sudah dipilih */
-.selected {
-  border: 2px solid var(--color-primary-2);
-  background-color: var(--color-primary-3);
-}
-
-/* Kotak selesai permainan */
-.finished {
-  background-color: var(--color-primary-3) !important;
-}
-
-/* Responsif untuk mobile */
-@media screen and (max-width: 768px) {
-  .container {
-    max-width: 100%;
-    padding: 25px; /* Padding lebih kecil agar responsif */
-    margin: 15px auto; /* Margin yang lebih kecil */
-  }
-
-  .title {
-    font-size: 28px; 
-  }
-
-  .grid {
-    max-width: 300px;
-    gap: 6px;
-  }
-
-  .level, .message {
-    font-size: 14px; 
-  }
-}
-
-/* Hover effect pada grid cell */
-.gridCell:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 255, 0.3);
-}
-
-/* Navigasi bawah */
+/* ---------- NAV BAWAH -------------------------------- */
 .bottomNav {
   display: flex;
   justify-content: space-around;
   position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--color-primary-4);
+  bottom: 0; width: 100%;
+  background: var(--color-primary-4);
   padding: 10px 0;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 5px rgba(0,0,0,.1);
+}
+.navItem { display: flex; justify-content: center; align-items: center; cursor: pointer; }
+.navItem img { width: 24px; height: 24px; }
+.navItem:hover { opacity: .8; }
+
+/* ---------- RESPONSIVE -------------------------------- */
+@media(max-width: 768px) {
+  .container { width: 95%; padding: 25px; margin: 15px auto; }
+  .grid      { max-width: 320px; gap: 6px; }
+  .startButton {
+    font-size: clamp(.95rem, 4.5vw, 1.15rem);
+    padding: clamp(12px, 5vw, 16px) clamp(24px, 9vw, 38px);
+  }
+}
+/* ---------- Gambar “clapping” (layar akhir) -------- */
+.clappingImage {
+  display: block;                       /* tampil di baris tersendiri */
+  width: clamp(90px, 25vw, 140px);      /* responsif — maks ±140 px */
+  height: auto;
+  margin: 0 auto 12px;                  /* center + jarak ke teks */
 }
 
-.navItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.navItem img {
-  width: 24px;
-  height: 24px;
-}
-
-.navItem:hover {
-  opacity: 0.8;
-}
