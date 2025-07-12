@@ -202,3 +202,11 @@ body {
   }
   .navItem img { width: 20px; height: 20px; }
 }
+/* ---------- PESAN SELESAI GAME ------------------------ */
+.gameOverMessage {
+  margin-bottom: 12px;      /* space di bawah kalimat "Selamat!" */
+}
+/* jarak antara skor & tombol */
+.scoreText {
+  margin-bottom: 16px;   /* atur sesuai selera */
+}

@@ -71,10 +71,8 @@ function Hewanku() {
   const [showCorrectMsg, setShowCorrectMsg] = useState(false);
   const navigate = useNavigate();
 
-  /* ---------- init ---------- */
   useEffect(() => generateQuestion(), []);
 
-  /* ---------- helpers ---------- */
   const startGame = () => {
     setGameStarted(true);
     setUserOrder(Array(images.length).fill(null));
@@ -90,23 +88,27 @@ function Hewanku() {
     setUserOrder(Array(images.length).fill(null));
   };
 
-  /* ------------- RETRY (SAME ORDER) ------------- */
   const handleRetry = () => {
-    setIsWrongAnswer(false);                     // tutup pesan salah
+    setIsWrongAnswer(false);
     setUserOrder(Array(images.length).fill(null));
-    setShowImages(true);                         // tampilkan urutan lama
+    setShowImages(true);
     setTimeout(() => setShowImages(false), 5000);
   };
 
+  /* ---------- RESET & LANGSUNG MAIN ---------- */
   const resetGame = () => {
     setCurrentLevel(1);
     setScore(0);
     setGameOver(false);
     setIsWrongAnswer(false);
-    generateQuestion();
+
+    generateQuestion();        // soal baru
+    setGameStarted(true);      // langsung masuk game
+    setShowImages(true);       // tampilkan kartu hafalan
+    setTimeout(() => setShowImages(false), 5000);
   };
 
-  /* ---------- submit logic ---------- */
+  /* ---------- SUBMIT ---------- */
   const submitAnswer = () => {
     if (userOrder.includes(null)) {
       alert("Harap isi semua kotak!");
@@ -116,13 +118,17 @@ function Hewanku() {
       setShowCorrectMsg(true);
       setTimeout(() => {
         setShowCorrectMsg(false);
+
         if (currentLevel < 5) {
           setCurrentLevel((lv) => lv + 1);
           setScore((s) => s + 1);
           generateQuestion();
           setShowImages(true);
           setTimeout(() => setShowImages(false), 5000);
-        } else setGameOver(true);
+        } else {
+          setScore((s) => s + 1);   // skor terakhir
+          setGameOver(true);
+        }
       }, 2000);
     } else {
       setIsWrongAnswer(true);
@@ -139,14 +145,12 @@ function Hewanku() {
   /* =================================================== */
   return (
     <div className={styles.container}>
-      {/* POPUP BENAR */}
       {showCorrectMsg && (
         <div className={styles.correctPopup}>
           <h3>Jawaban Anda Benar! 😊</h3>
         </div>
       )}
 
-      {/* PANEL SALAH */}
       {isWrongAnswer ? (
         <div className={styles.errorPage}>
           <h3>Yah :( Coba Lagi Yuk!</h3>
@@ -156,16 +160,16 @@ function Hewanku() {
           </button>
         </div>
       ) : gameOver ? (
-        /* GAME SELESAI */
         <div>
-          <h3>Selamat! Anda telah menyelesaikan permainan!</h3>
-          <p>Skor Anda: {score}</p>
+          <h3 className={styles.gameOverMessage}>
+            Selamat! Anda telah menyelesaikan permainan!
+          </h3>
+          <p className={styles.scoreText}>Skor Anda: {score}</p>
           <button onClick={resetGame} className={styles.submitButton}>
             Main Lagi
           </button>
         </div>
       ) : !gameStarted ? (
-        /* INTRO */
         <div>
           <p className={styles.introText}>
             Hafalkan lalu susun kembali dalam urutan yang benar!
@@ -175,7 +179,6 @@ function Hewanku() {
           </button>
         </div>
       ) : showImages ? (
-        /* FASE HAFAL */
         <div>
           <h3>Hafalkan Urutannya!</h3>
           <div className={styles.grid}>
@@ -191,7 +194,6 @@ function Hewanku() {
           </div>
         </div>
       ) : (
-        /* FASE DND */
         <DndContext
           onDragEnd={({ active, over }) => {
             if (over && !userOrder.includes(Number(active.id))) {
@@ -232,7 +234,6 @@ function Hewanku() {
         </DndContext>
       )}
 
-      {/* NAV BAR */}
       <nav className={styles.bottomNav}>
         <div className={styles.navItem} onClick={() => navigate("/")}>
           <img src="/assets/afasia/menu.svg" alt="Home" />
