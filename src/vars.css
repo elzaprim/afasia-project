@@ -1,18 +1,25 @@
 :root {
-    /* Colors */
-    --color-bg: #fff;
-    --color-primary-1: #4472D3; 
-    --color-primary-2: #7894CF; 
-    --color-primary-3: #C7CEF4; 
-    --color-primary-4: #F3CD6D; 
-    --color-primary-5: #F7DD9C; 
-    --color-primary-6: #F2D7D7; 
-    --color-secondary: #F7F7F7;
-    --color-error: #E86E6E;
-    --color-add-1:  #EF9A9A;
-    --color-add-2: #2D8077;
+  /* Backgrounds & Surfaces */
+  --color-bg: #ffffff;
+  --color-surface: #f0fdf4; /* Hijau sangat muda, kesan segar */
 
+  /* Primary Colors (Hijau dominan) */
+  --color-primary-1: #2e7d32;   /* Hijau tua - utama */
+  --color-primary-2: #1b5e20;   /* Hijau sangat gelap */
+  --color-primary-3: #81c784;   /* Hijau cerah - aksen aktif */
+  --color-primary-4: #c8e6c9;   /* Hijau muda - hover/surface */
+  --color-primary-5: #a5d6a7;   /* Hijau pastel - netral positif */
+  --color-primary-6: #f1f8e9;   /* Hijau paling pucat - latar permukaan */
 
-    /* Fonts */
-    --font-robot: "Roboto";
+  /* Secondary & Accent */
+  --color-secondary: #e8f5e9;   /* Latar sekunder hijau muda */
+  --color-add-1: #cfd8dc;       /* Abu Netral soft */
+  --color-add-2: #a7ffeb;       /* Mint cyan – sentuhan teknologi */
+
+  /* Status Colors */
+  --color-error: #d32f2f;       /* Merah gelap untuk error */
+
+  /* Fonts */
+  --font-robot: "Roboto", sans-serif;
 }
+

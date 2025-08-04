@@ -1,163 +1,98 @@
-@import "../../vars.css"; /* Mengimpor variabel dari vars.css */
-
-/* Kontainer utama untuk halaman login */
 .loginContainer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 450px; /* Sedikit lebih lebar agar tampak lebih rapi di desktop */
-  margin: 0 auto;
-  padding: 25px; /* Menambah padding untuk kenyamanan */
-  background-color: var(--color-bg); /* Warna latar belakang ringan */
-  border-radius: 12px; /* Radius sudut lebih halus */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Efek bayangan lebih lembut */
-  font-family: 'Arial', sans-serif; /* Gunakan font yang konsisten */
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a8e063, #fdfd6b, #56ccf2);
+  font-family: 'Segoe UI', sans-serif;
+  padding: 2rem;
 }
 
-/* Judul halaman login */
+.card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
 .title {
-  font-size: 32px; /* Ukuran font yang lebih besar */
-  font-weight: 600;
-  color: var(--color-primary-2); /* Warna utama */
-  /* margin-bottom: 20px; */
-  text-align: center; /* Membuat teks judul lebih terpusat */
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
-/* Formulir untuk login atau buat akun */
+.brand {
+  color: #00b894;
+}
+
+.subtitle {
+  margin-bottom: 1.2rem;
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.heroImg {
+  width: 100px;
+  margin: 0 auto 1rem auto;
+}
+
 .formContainer {
-  width: 100%;
-  margin-top: 20px; /* Menambahkan jarak di antara judul dan formulir */
-  color: var(--color-primary-2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-
 
 .inputField {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 20px; /* Menambah jarak antar input */
-  border: 1px solid var(--color-primary-2); /* Warna border yang lebih lembut */
-  border-radius: 6px; /* Sudut input yang lebih bulat */
-  font-size: 16px;
-  color: var(--color-text-dark); /* Warna teks */
-  transition: border-color 0.3s ease; /* Efek transisi untuk border */
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: border-color 0.2s;
 }
 
 .inputField:focus {
-  border-color: var(--color-primary-4); /* Mengubah warna border saat fokus */
+  border-color: #00b894;
   outline: none;
 }
 
-/* Tombol Kirim */
 .submitButton {
-  width: 100%;
-  padding: 14px;
-  background-color: var(--color-primary-2); /* Warna tombol utama */
+  background-color: #00b894;
   color: white;
+  padding: 0.75rem;
   border: none;
-  border-radius: 6px; /* Sudut tombol lebih halus */
+  border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease; /* Efek transisi saat hover */
+  transition: background-color 0.3s;
 }
 
 .submitButton:hover {
-  background-color: var(--color-primary-1); /* Warna saat hover */
-}
-
-.submitButton:focus {
-  outline: none; /* Hilangkan outline saat tombol difokuskan */
-}
-
-/* Tautan untuk switch login dan buat akun */
-.switchLink {
-  color: var(--color-primary-2);
-  cursor: pointer;
-  margin-top: 15px;
-  text-align: center;
-  font-size: 14px;
-}
-
-/* Gambar di bawah judul */
-.heroImg {
-  width: 75%; /* Membuat gambar responsif secara horizontal */
-  max-width: 400px; /* Menetapkan ukuran maksimum gambar di desktop */
-  height: auto; /* Menjaga proporsi gambar */
-  max-height: 250px; /* Membatasi tinggi maksimum gambar di desktop */
-  /* margin-top: 2px; Memberikan ruang di atas gambar */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Tombol Kembali */
-.backButton {
-  width: 100%;
-  padding: 14px;
-  background-color: var(--color-primary-2);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  margin-top: 10px; /* Menambahkan margin atas agar ada jarak dengan tombol utama */
-  transition: background-color 0.3s ease;
-}
-
-.backButton:hover {
-  background-color: var(--color-primary-1);
-}
-
-.backButton:focus {
-  outline: none;
-}
-
-
-/* Responsif untuk tampilan mobile */
-@media screen and (max-width: 830px) {
-  .loginContainer {
-    max-width: 400px; /* Menyesuaikan lebar di tampilan mobile */
-    padding: 20px; /* Menyesuaikan padding untuk tampilan kecil */
-  }
-
-  .title {
-    font-size: 28px; /* Menyesuaikan ukuran font pada tampilan mobile */
-    margin-bottom: 15px; /* Memberikan ruang lebih kecil pada mobile */
-  }
-
-  .inputField {
-    font-size: 14px; /* Menyesuaikan ukuran font input pada tampilan mobile */
-  }
-
-  .submitButton {
-    font-size: 14px; /* Menyesuaikan ukuran font tombol pada tampilan mobile */
-  }
-
-  .heroImg {
-    max-width: 100%; /* Gambar menyesuaikan lebar layar kecil */
-    max-height: 400px; /* Membatasi tinggi gambar di tampilan kecil */
-  }
-}
-
-.selectField {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 25px; /* Spacing between the dropdown and the submit button */
-  border: 1px solid var(--color-primary-2);
-  border-radius: 6px;
-  font-size: 16px;
-  color: var(--color-text-dark);
-  transition: border-color 0.3s ease;
-}
-
-.selectField:focus {
-  border-color: var(--color-primary-1); /* Mengubah warna border saat fokus */
-  outline: none;
+  background-color: #009e7d;
 }
 
 .errorMessage {
-  color: var(--color-error);
-  font-size: 12px;
-  margin-top: 5px;
+  color: red;
+  font-size: 0.9rem;
+}
+
+.switchLink {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #444;
+  cursor: pointer;
+}
+
+.linkAccent {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.successMessage {
+  color: #4caf50;
+  margin-top: 10px;
+  font-weight: bold;
 }

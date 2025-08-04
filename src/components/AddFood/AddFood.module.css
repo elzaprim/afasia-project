@@ -1,0 +1,144 @@
+/* Latar belakang penuh */
+.foodOuterContainer {
+  min-height: 100vh;
+  padding-bottom: 120px; /* agar tidak terpotong oleh BottomNav */
+  background: linear-gradient(to bottom right, #00ff88, #00d0ff, #fff94d);
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+/* Kontainer utama */
+.foodInnerContainer {
+  width: 95%;
+  max-width: 600px;
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  margin: 32px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+/* Judul */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form input */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.inputGroup label {
+  font-weight: 500;
+  color: #333;
+}
+
+.inputGroup select,
+.inputGroup input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.addButton {
+  padding: 10px;
+  background-color: #00c896;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.addButton:hover {
+  background-color: #00a57a;
+}
+
+/* Section makan */
+.mealSection {
+  margin-bottom: 24px;
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.foodList {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px;
+}
+
+.foodItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f2f2f2;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.itemContent {
+  flex-grow: 1;
+  color: #333;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.editButton,
+.deleteButton {
+  background-color: #ddd;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.editButton:hover {
+  background-color: #cde9ff;
+}
+
+.deleteButton:hover {
+  background-color: #ffcccc;
+}
+
+.empty {
+  font-style: italic;
+  color: #666;
+  padding-left: 8px;
+}
+
+/* Total nutrisi */
+.summaryBox {
+  background-color: #e6fff7;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  color: #000;
+  margin-top: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.summaryBox h4 {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,61 @@
+// foodData.js
+
+export const foodList = [
+  {
+    name: "Nasi putih",
+    kalori: 360,
+    karbohidrat: 79.6,
+    protein: 6,
+    lemak: 0.6,
+  },
+  {
+    name: "Gurame Asam Manis Seadanya",
+    kalori: 410,
+    karbohidrat: 74.8,
+    protein: 19.4,
+    lemak: 3.5,
+  },
+  {
+    name: "Gurame saos mangga",
+    kalori: 418,
+    karbohidrat: 74,
+    protein: 9.6,
+    lemak: 11.2,
+  },
+  
+];
+
+export const sayurList = [
+  {
+    name: "Sayur Asem",
+    kalori: 27,
+    karbohidrat: 0.9,
+    protein: 1.4,
+    lemak: 2.1,
+  },
+  {
+    name: "Sayur Lodeh",
+    kalori: 78,
+    karbohidrat: 4.1,
+    protein: 2.2,
+    lemak: 8.5,
+  },
+  
+];
+
+export const snackList = [
+  {
+    name: "Alpukat",
+    kalori: 85,
+    karbohidrat: 7.7,
+    protein: 0.9,
+    lemak: 6.5,
+  },
+  {
+    name: "Apel malang",
+    kalori: 57,
+    karbohidrat: 12.8,
+    protein: 0.5,
+    lemak: 0.4,
+  },
+];

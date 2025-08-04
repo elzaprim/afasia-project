@@ -5,24 +5,24 @@ import styles from "./About.module.css";
 export const About = () => {
     const slides = [
         {
-            image: "afasia/hero-afa.svg",
-            title: "For Better Life",
-            text: "Aku akan membantumu mengenal aplikasi ini. Mulai mengenal fitur-fitur pada aplikasi."
+            image: "runner/running_5024672.png",
+            title: "FitRun",
+            text: "Nutrisi optimal untuk setiap langkah Anda."
         },
         {
-            image: "afasia/blocks-abc 1.svg",
-            title: "Kataku",
-            text: "Menebak kata sesuai dengan pertanyaan"
+            image: "runner/nutrition-icon.svg",
+            title: "Perencanaan Menu Harian",
+            text: "Dapatkan rekomendasi menu harian yang dipersonalisasi sesuai fase latihan dan tujuan performa Anda."
         },
         {
-            image: "afasia/tic-tac-toe-flat 1.svg",
-            title: "Kotak Memori",
-            text: "Memilih posisi kotak putih pada matriks"
+            image: "runner/sports-running-shoes-color-icon.svg",
+            title: "Pencatatan Aktivitas & Asupan",
+            text: "Catat makanan dan aktivitas harian Anda untuk memantau asupan nutrisi dan pengeluaran energi secara real-time."
         },
         {
-            image: "afasia/cat-about.svg",
-            title: "Hewanku",
-            text: "Memilih  gambar hewan sesuai dengan urutannya"
+            image: "runner/schedule_2000025.png",
+            title: "Analisis & Evaluasi Cerdas",
+            text: "Tinjau ringkasan harian Anda untuk tetap sesuai dengan periodisasi nutrisi Anda."
         }
     ];
 
@@ -38,7 +38,7 @@ export const About = () => {
 
     return (
         <section className={styles.container} id="about">
-            <h2 className={styles.title}>Teman Afasia</h2>
+            <h2 className={styles.title}>FitRun</h2>
             <div className={styles.content}>
                 <img
                     src={getImageUrl(slides[currentSlide].image)}
@@ -51,10 +51,10 @@ export const About = () => {
                 </div>
                 <div className={styles.navigation}>
                     {currentSlide > 0 && (
-                        <button onClick={prevSlide}>Kembali</button>
+                        <button onClick={prevSlide}>Sebelumnya</button>
                     )}
                     {currentSlide < slides.length - 1 && (
-                        <button onClick={nextSlide}>Selanjutnya</button>
+                        <button onClick={nextSlide}>Berikutnya</button>
                     )}
                 </div>
             </div>

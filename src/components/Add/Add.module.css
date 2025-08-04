@@ -1,0 +1,46 @@
+.addOuterContainer {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #00ff88, #f5ff00, #00d0ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.addInnerContainer {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.optionGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.optionCard {
+  padding: 1rem;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.optionCard:hover {
+  transform: scale(1.05);
+}
